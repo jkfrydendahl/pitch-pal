@@ -12,6 +12,7 @@ export function createPlayer() {
   return {
     load(url) {
       audio.src = url;
+      audio.load();
     },
     async play() {
       await audio.play();

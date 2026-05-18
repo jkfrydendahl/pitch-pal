@@ -6,7 +6,8 @@ async function resolveAudioUrl(url) {
   if (url.startsWith('/api/audio')) {
     const response = await fetch(url);
     const data = await response.json();
-    return data.downloadUrl;
+    // Remove download=1 param so the browser streams instead of downloading
+    return data.downloadUrl.replace(/([?&])download=1(&?)/, (_, p1, p2) => p2 ? p1 : '');
   }
   return url;
 }
