@@ -53,7 +53,7 @@ export function createUI({ onTrackSelect, onPlay, onPause, onStop, onSeek }) {
 
     showPaused() {
       isPlaying = false;
-      btnPlayPause.textContent = '▶';
+      btnPlayPause.textContent = '';
       btnPlayPause.setAttribute('aria-label', 'Play');
       btnPlayPause.classList.remove('btn-pause');
       btnPlayPause.classList.add('btn-play');

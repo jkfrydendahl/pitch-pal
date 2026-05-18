@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pitchpal-v1';
+const CACHE_NAME = 'pitchpal-v2';
 const APP_SHELL = [
   './',
   './index.html',
@@ -32,7 +32,14 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Network-first: try network, fall back to cache
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    fetch(event.request)
+      .then((response) => {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
