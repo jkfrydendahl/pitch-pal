@@ -30,7 +30,21 @@ export function createUI({ onTrackSelect, onPlay, onPause, onStop, onSeek }) {
       trackList.innerHTML = '';
       tracks.forEach((track, idx) => {
         const li = document.createElement('li');
-        li.textContent = track.name;
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = track.name;
+        li.appendChild(nameSpan);
+
+        if (track.youtube) {
+          const link = document.createElement('a');
+          link.href = track.youtube;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.className = 'youtube-link';
+          link.textContent = '▶ YT';
+          link.addEventListener('click', (e) => e.stopPropagation());
+          li.appendChild(link);
+        }
+
         li.addEventListener('click', () => onTrackSelect(idx));
         trackList.appendChild(li);
       });
