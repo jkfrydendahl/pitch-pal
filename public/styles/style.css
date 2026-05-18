@@ -143,7 +143,7 @@ h1 {
   display: block;
   width: 0.8rem;
   height: 0.8rem;
-  background: var(--text-muted);
+  background: white;
   border-radius: 2px;
 }
 
