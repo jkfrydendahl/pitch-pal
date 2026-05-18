@@ -2,6 +2,18 @@ import { createPlayer } from './player.js';
 import { createState } from './state.js';
 import { createUI } from './ui.js';
 
+function updateMediaSession(title) {
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title,
+      artist: 'PitchPal',
+      artwork: [
+        { src: './icon.svg', sizes: '512x512', type: 'image/svg+xml' },
+      ],
+    });
+  }
+}
+
 export async function createApp() {
   const player = createPlayer();
   const state = createState();
@@ -20,6 +32,7 @@ export async function createApp() {
       player.seekTo(savedPosition);
       ui.highlightTrack(idx);
       ui.showPaused();
+      updateMediaSession(track.name);
     },
     onPlay() {
       if (currentTrackIdx === null) return;
