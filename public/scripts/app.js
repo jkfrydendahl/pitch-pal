@@ -2,16 +2,6 @@ import { createPlayer } from './player.js';
 import { createState } from './state.js';
 import { createUI } from './ui.js';
 
-async function resolveAudioUrl(url) {
-  if (url.startsWith('/api/audio')) {
-    const response = await fetch(url);
-    const data = await response.json();
-    // Remove download=1 param so the browser streams instead of downloading
-    return data.downloadUrl.replace(/([?&])download=1(&?)/, (_, p1, p2) => p2 ? p1 : '');
-  }
-  return url;
-}
-
 export async function createApp() {
   const player = createPlayer();
   const state = createState();
@@ -19,17 +9,14 @@ export async function createApp() {
   let tracks = [];
 
   const ui = createUI({
-    async onTrackSelect(idx) {
+    onTrackSelect(idx) {
       if (currentTrackIdx !== null && currentTrackIdx !== idx) {
         state.savePosition(`track-${currentTrackIdx}`, player.getCurrentTime());
       }
       currentTrackIdx = idx;
       const track = tracks[idx];
       const savedPosition = state.getPosition(`track-${idx}`);
-
-      // Resolve the audio URL (may need signed URL from proxy)
-      const audioUrl = await resolveAudioUrl(track.url);
-      player.load(audioUrl);
+      player.load(track.url);
       player.seekTo(savedPosition);
       ui.highlightTrack(idx);
       ui.showPaused();

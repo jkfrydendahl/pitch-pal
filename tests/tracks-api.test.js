@@ -40,7 +40,7 @@ describe('api/tracks', () => {
     expect(res.body[0].url).toBe('https://example.com/warmup.mp3');
   });
 
-  it('proxies Vercel Blob URLs through /api/audio', () => {
+  it('returns Vercel Blob URLs directly', () => {
     const tracks = [{ name: 'Test', url: 'https://abc.public.blob.vercel-storage.com/track.mp3', duration: '1:00' }];
     process.env.TRACKS_JSON = JSON.stringify(tracks);
 
@@ -48,8 +48,7 @@ describe('api/tracks', () => {
     handler(createMockReq(), res);
 
     expect(res.statusCode).toBe(200);
-    expect(res.body[0].url).toContain('/api/audio?url=');
-    expect(res.body[0].url).toContain(encodeURIComponent('https://abc.public.blob.vercel-storage.com/track.mp3'));
+    expect(res.body[0].url).toBe('https://abc.public.blob.vercel-storage.com/track.mp3');
   });
 
   it('returns empty array when TRACKS_JSON is not set', () => {
