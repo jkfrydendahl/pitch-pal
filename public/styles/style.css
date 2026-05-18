@@ -26,6 +26,9 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: 2rem 1rem;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .container {
@@ -68,7 +71,7 @@ h1 {
 }
 
 .youtube-link {
-  color: #ff4444;
+  color: var(--text-muted);
   text-decoration: none;
   padding: 0.2rem;
   border-radius: 0.25rem;
@@ -78,7 +81,7 @@ h1 {
 }
 
 .youtube-link:hover {
-  color: #ff4444;
+  color: var(--text-muted);
 }
 
 .track-list li:hover {
