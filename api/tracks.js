@@ -9,7 +9,7 @@ export default function handler(req, res) {
     const tracks = JSON.parse(raw);
     const resolved = tracks.map((track) => ({
       ...track,
-      url: toDirectUrl(track.url),
+      url: toProxyUrl(track.url),
     }));
     return res.status(200).json(resolved);
   } catch {
@@ -17,16 +17,10 @@ export default function handler(req, res) {
   }
 }
 
-function toDirectUrl(url) {
-  // Already a direct URL (not a OneDrive sharing link)
-  if (!url.includes('1drv.ms') && !url.includes('onedrive.live.com')) {
-    return url;
+function toProxyUrl(url) {
+  // If it's a Vercel Blob URL, route through our proxy
+  if (url.includes('.blob.vercel-storage.com') || url.includes('.public.blob')) {
+    return `/api/audio?url=${encodeURIComponent(url)}`;
   }
-  // Convert OneDrive share link to direct download URL
-  const encoded = Buffer.from(url)
-    .toString('base64')
-    .replace(/\//g, '_')
-    .replace(/\+/g, '-')
-    .replace(/=+$/, '');
-  return `https://api.onedrive.com/v1.0/shares/u!${encoded}/root/content`;
+  return url;
 }
