@@ -44,7 +44,7 @@ describe('ui', () => {
   });
 
   describe('track list rendering', () => {
-    it('renders tracks with name and duration', () => {
+    it('renders tracks with name', () => {
       const tracks = [
         { name: 'Warm Up', url: 'http://x.mp3', duration: '3:45' },
         { name: 'Scales', url: 'http://y.mp3', duration: '5:00' },
@@ -53,9 +53,8 @@ describe('ui', () => {
 
       const items = document.querySelectorAll('#track-list li');
       expect(items).toHaveLength(2);
-      expect(items[0].textContent).toContain('Warm Up');
-      expect(items[0].textContent).toContain('3:45');
-      expect(items[1].textContent).toContain('Scales');
+      expect(items[0].textContent).toBe('Warm Up');
+      expect(items[1].textContent).toBe('Scales');
     });
 
     it('emits onTrackSelect when a track is clicked', () => {

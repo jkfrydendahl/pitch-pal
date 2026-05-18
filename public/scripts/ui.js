@@ -30,7 +30,7 @@ export function createUI({ onTrackSelect, onPlay, onPause, onStop, onSeek }) {
       trackList.innerHTML = '';
       tracks.forEach((track, idx) => {
         const li = document.createElement('li');
-        li.textContent = `${track.name} (${track.duration})`;
+        li.textContent = track.name;
         li.addEventListener('click', () => onTrackSelect(idx));
         trackList.appendChild(li);
       });
