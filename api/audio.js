@@ -9,8 +9,7 @@ export default async function handler(req, res) {
 
   try {
     const downloadUrl = await getDownloadUrl(url);
-    res.setHeader('Cache-Control', 'private, no-store');
-    return res.redirect(307, downloadUrl);
+    return res.status(200).json({ downloadUrl });
   } catch (error) {
     return res.status(404).json({ error: 'Audio file not found' });
   }
