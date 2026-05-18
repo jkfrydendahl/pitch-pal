@@ -9,6 +9,12 @@ export function createPlayer() {
     }
   });
 
+  audio.addEventListener('loadedmetadata', () => {
+    if (timeUpdateCallback) {
+      timeUpdateCallback(audio.currentTime, audio.duration || 0);
+    }
+  });
+
   return {
     load(url) {
       audio.src = url;
