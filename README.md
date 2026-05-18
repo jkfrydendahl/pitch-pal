@@ -1,4 +1,4 @@
-# PitchPal 🎵
+# PitchPal
 
 A simple PWA for playing vocal exercise audio files. Select a track, play/pause/stop, and pick up where you left off.
 
