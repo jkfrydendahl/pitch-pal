@@ -88,7 +88,7 @@ h1 {
   font-size: 1.2rem;
   line-height: 1;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,9 +100,12 @@ h1 {
   color: white;
 }
 
+.btn-play {
+  padding-left: 0.15rem;
+}
+
 .btn-play:hover, .btn-pause:hover {
   background: var(--primary-light);
-  transform: scale(1.05);
 }
 
 .btn-stop {
