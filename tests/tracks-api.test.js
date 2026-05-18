@@ -36,7 +36,20 @@ describe('api/tracks', () => {
     handler(createMockReq(), res);
 
     expect(res.statusCode).toBe(200);
-    expect(res.body).toEqual(tracks);
+    expect(res.body[0].name).toBe('Warm Up');
+    expect(res.body[0].url).toBe('https://example.com/warmup.mp3');
+  });
+
+  it('converts OneDrive share links to direct download URLs', () => {
+    const tracks = [{ name: 'Test', url: 'https://1drv.ms/u/s!ABC123', duration: '1:00' }];
+    process.env.TRACKS_JSON = JSON.stringify(tracks);
+
+    const res = createMockRes();
+    handler(createMockReq(), res);
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body[0].url).toContain('api.onedrive.com/v1.0/shares/u!');
+    expect(res.body[0].url).toContain('/root/content');
   });
 
   it('returns empty array when TRACKS_JSON is not set', () => {

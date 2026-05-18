@@ -22,6 +22,7 @@ export async function createApp() {
       ui.showPaused();
     },
     onPlay() {
+      if (currentTrackIdx === null) return;
       player.play();
       ui.showPlaying();
     },
