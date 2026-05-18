@@ -81,7 +81,7 @@ h1 {
 }
 
 .youtube-link:hover {
-  color: var(--text-muted);
+  color: #ff4444;
 }
 
 .track-list li:hover {
