@@ -1,6 +1,13 @@
 export function createPlayer() {
   const audio = new Audio();
   let playing = false;
+  let timeUpdateCallback = null;
+
+  audio.addEventListener('timeupdate', () => {
+    if (timeUpdateCallback) {
+      timeUpdateCallback(audio.currentTime, audio.duration || 0);
+    }
+  });
 
   return {
     load(url) {
@@ -19,11 +26,20 @@ export function createPlayer() {
       audio.currentTime = 0;
       playing = false;
     },
+    seekTo(time) {
+      audio.currentTime = time;
+    },
     isPlaying() {
       return playing;
     },
     getCurrentTime() {
       return audio.currentTime;
+    },
+    onTimeUpdate(callback) {
+      timeUpdateCallback = callback;
+    },
+    _testSetCurrentTime(time) {
+      audio.currentTime = time;
     },
   };
 }
