@@ -1,4 +1,4 @@
-import { head } from '@vercel/blob';
+import { getDownloadUrl } from '@vercel/blob';
 
 export default async function handler(req, res) {
   const { url } = req.query;
@@ -8,13 +8,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    const metadata = await head(url, {
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-    });
-
-    // metadata.downloadUrl is a signed URL that grants temporary access
+    const downloadUrl = await getDownloadUrl(url);
     res.setHeader('Cache-Control', 'private, no-store');
-    return res.redirect(307, metadata.downloadUrl);
+    return res.redirect(307, downloadUrl);
   } catch (error) {
     return res.status(404).json({ error: 'Audio file not found' });
   }
