@@ -119,9 +119,32 @@ h1 {
   background: var(--primary-light);
 }
 
+.btn-pause::before,
+.btn-pause::after {
+  content: '';
+  display: block;
+  width: 0.25rem;
+  height: 0.9rem;
+  background: white;
+  border-radius: 1px;
+}
+
+.btn-pause::before {
+  margin-right: 0.25rem;
+}
+
 .btn-stop {
   background: #2a2a3a;
   color: var(--text-muted);
+}
+
+.btn-stop::after {
+  content: '';
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--text-muted);
+  border-radius: 2px;
 }
 
 .btn-stop:hover {
