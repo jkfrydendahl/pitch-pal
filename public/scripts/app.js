@@ -8,7 +8,7 @@ function updateMediaSession(title) {
       title,
       artist: 'PitchPal',
       artwork: [
-        { src: './icon.svg', sizes: '512x512', type: 'image/svg+xml' },
+        { src: './icon.png', sizes: '512x512', type: 'image/png' },
       ],
     });
   }
