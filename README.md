@@ -34,8 +34,8 @@ Audio files are stored in Vercel Blob (public access).
 
 ```json
 [
-  { "name": "All Exercises", "url": "https://your-store.public.blob.vercel-storage.com/file.mp3", "duration": "27:37" },
-  { "name": "Warm Up Only", "url": "https://your-store.public.blob.vercel-storage.com/warmup.mp3", "duration": "5:00" }
+  { "name": "All Exercises", "url": "https://your-store.public.blob.vercel-storage.com/file.mp3" },
+  { "name": "Warm Up Only", "url": "https://your-store.public.blob.vercel-storage.com/warmup.mp3" }
 ]
 ```
 
