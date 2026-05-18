@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PitchPal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6c63ff">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+</head>
+<body>
+
+<div class="container">
+  <h1>🎵 PitchPal</h1>
+
+  <div id="error-message" class="error" hidden></div>
+
+  <ul id="track-list" class="track-list"></ul>
+
+  <div class="player-controls">
+    <button id="btn-play" class="btn btn-play" aria-label="Play">▶</button>
+    <button id="btn-pause" class="btn btn-pause" hidden aria-label="Pause">⏸</button>
+    <button id="btn-stop" class="btn btn-stop" aria-label="Stop">⏹</button>
+  </div>
+
+  <div class="progress-container">
+    <span id="time-current" class="time">0:00</span>
+    <input id="progress" type="range" min="0" max="100" value="0" class="progress-bar">
+    <span id="time-total" class="time">0:00</span>
+  </div>
+</div>
+
+<script type="module">
+  import { createApp } from './scripts/app.js';
+  createApp();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+  }
+</script>
+
+</body>
+</html>
