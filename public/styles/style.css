@@ -68,7 +68,7 @@ h1 {
 }
 
 .youtube-link {
-  color: var(--text-muted);
+  color: #ff4444;
   text-decoration: none;
   padding: 0.2rem;
   border-radius: 0.25rem;
