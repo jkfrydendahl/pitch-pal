@@ -13,8 +13,7 @@ describe('ui', () => {
     container = document.createElement('div');
     container.innerHTML = `
       <ul id="track-list"></ul>
-      <button id="btn-play">Play</button>
-      <button id="btn-pause" hidden>Pause</button>
+      <button id="btn-play-pause">▶</button>
       <button id="btn-stop">Stop</button>
       <input id="progress" type="range" min="0" max="100" value="0">
       <span id="time-current">0:00</span>

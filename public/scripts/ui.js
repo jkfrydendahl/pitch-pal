@@ -1,15 +1,21 @@
 export function createUI({ onTrackSelect, onPlay, onPause, onStop, onSeek }) {
   const trackList = document.getElementById('track-list');
-  const btnPlay = document.getElementById('btn-play');
-  const btnPause = document.getElementById('btn-pause');
+  const btnPlayPause = document.getElementById('btn-play-pause');
   const btnStop = document.getElementById('btn-stop');
   const progress = document.getElementById('progress');
   const timeCurrent = document.getElementById('time-current');
   const timeTotal = document.getElementById('time-total');
   const errorMessage = document.getElementById('error-message');
 
-  btnPlay.addEventListener('click', () => onPlay());
-  btnPause.addEventListener('click', () => onPause());
+  let isPlaying = false;
+
+  btnPlayPause.addEventListener('click', () => {
+    if (isPlaying) {
+      onPause();
+    } else {
+      onPlay();
+    }
+  });
   btnStop.addEventListener('click', () => onStop());
   progress.addEventListener('input', () => onSeek(Number(progress.value)));
 
@@ -38,13 +44,19 @@ export function createUI({ onTrackSelect, onPlay, onPause, onStop, onSeek }) {
     },
 
     showPlaying() {
-      btnPlay.hidden = true;
-      btnPause.hidden = false;
+      isPlaying = true;
+      btnPlayPause.textContent = '⏸';
+      btnPlayPause.setAttribute('aria-label', 'Pause');
+      btnPlayPause.classList.remove('btn-play');
+      btnPlayPause.classList.add('btn-pause');
     },
 
     showPaused() {
-      btnPlay.hidden = false;
-      btnPause.hidden = true;
+      isPlaying = false;
+      btnPlayPause.textContent = '▶';
+      btnPlayPause.setAttribute('aria-label', 'Play');
+      btnPlayPause.classList.remove('btn-pause');
+      btnPlayPause.classList.add('btn-play');
     },
 
     showError(message) {
