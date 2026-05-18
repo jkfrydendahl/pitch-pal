@@ -1,13 +1,14 @@
 :root {
-  --primary: #6c63ff;
-  --primary-light: #8b83ff;
-  --background: linear-gradient(135deg, #f0f0ff, #e8e6ff);
-  --card-bg: #ffffff;
-  --text: #2d3436;
-  --text-muted: #636e72;
-  --shadow: rgba(108, 99, 255, 0.1);
-  --active-bg: #f0eeff;
-  --active-border: #6c63ff;
+  --primary: #7c6fff;
+  --primary-light: #9d93ff;
+  --background: #121218;
+  --card-bg: #1c1c26;
+  --text: #e8e8f0;
+  --text-muted: #8888a0;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --track-bg: #242430;
+  --track-hover: #2a2a3a;
+  --active-border: #7c6fff;
 }
 
 * {
@@ -54,22 +55,20 @@ h1 {
 .track-list li {
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
-  background: #f9f9ff;
+  background: var(--track-bg);
   border-radius: 0.6rem;
   font-size: 0.95rem;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: all 0.15s;
+  transition: background 0.15s;
 }
 
 .track-list li:hover {
-  background: var(--active-bg);
+  background: var(--track-hover);
 }
 
 .track-list li.active {
-  background: var(--active-bg);
   border-color: var(--active-border);
-  font-weight: 600;
 }
 
 /* Player controls */
@@ -121,12 +120,12 @@ h1 {
 }
 
 .btn-stop {
-  background: #f0f0f0;
-  color: var(--text);
+  background: #2a2a3a;
+  color: var(--text-muted);
 }
 
 .btn-stop:hover {
-  background: #e0e0e0;
+  background: #363645;
 }
 
 /* Progress */
@@ -148,7 +147,7 @@ h1 {
   height: 6px;
   -webkit-appearance: none;
   appearance: none;
-  background: #e0e0e0;
+  background: #2a2a3a;
   border-radius: 3px;
   outline: none;
 }
@@ -173,12 +172,12 @@ h1 {
 
 /* Error */
 .error {
-  background: #fff0f0;
-  border: 1px solid #ffcccc;
+  background: #2d1f1f;
+  border: 1px solid #5c2a2a;
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
-  color: #cc3333;
+  color: #ff6666;
   font-size: 0.9rem;
 }
 
