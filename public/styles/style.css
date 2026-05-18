@@ -68,19 +68,17 @@ h1 {
 }
 
 .youtube-link {
-  font-size: 0.7rem;
   color: var(--text-muted);
   text-decoration: none;
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem;
   border-radius: 0.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
 }
 
 .youtube-link:hover {
-  color: var(--primary-light);
-  background: rgba(255, 255, 255, 0.1);
+  color: #ff4444;
 }
 
 .track-list li:hover {
