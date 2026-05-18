@@ -1,0 +1,16 @@
+{
+  "name": "pitch-pal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PitchPal — A vocal exercise audio player PWA",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1",
+    "vitest": "^4.1.6"
+  }
+}
