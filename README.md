@@ -41,6 +41,6 @@ Audio files are stored in Vercel Blob (public access).
 
 ## Architecture
 
-- `public/` — Static PWA (HTML, CSS, JS modules)
-- `api/tracks.js` — Vercel serverless function (reads `TRACKS_JSON` env var)
-- `tests/` — Vitest unit tests
+- `public/` - Static PWA (HTML, CSS, JS modules)
+- `api/tracks.js` - Vercel serverless function (reads `TRACKS_JSON` env var)
+- `tests/` - Vitest unit tests
